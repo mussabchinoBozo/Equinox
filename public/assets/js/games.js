@@ -43,9 +43,9 @@ fetch('games.json')
                             iframe.src = '/assets/local/games/rb/index.html';
                             const url = 'eq://retro-bowl';
                             document.getElementById("align").style.display = "flex";
-	                        document.querySelector(".topbar").style.width = "98%";
-	                        document.getElementById("exit").style.display = "flex";
-	                        document.getElementById("homebtn").style.display = "none";
+                            document.querySelector(".topbar").style.width = "98%";
+                            document.getElementById("exit").style.display = "flex";
+                            document.getElementById("homebtn").style.display = "none";
                             document.getElementById("search").placeholder = url;
                         } else {
                             hideLoadingScreen();

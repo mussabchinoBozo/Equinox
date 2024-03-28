@@ -102,7 +102,7 @@ httpServer.on("upgrade", (req, socket, head) => {
     else socket.end();
 });
 
-httpServer.listen({ port: process.env.PORT || 8000 }, () => {
+httpServer.listen({ port: process.env.PORT || 8080 }, () => {
     const addr = httpServer.address();
     console.log(`
     ███████╗░██████╗░██╗░░░██╗██╗███╗░░██╗░█████╗░██╗░░██╗

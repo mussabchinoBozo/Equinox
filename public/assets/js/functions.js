@@ -32,12 +32,11 @@ function cloakPage(selectedCloak) {
         document.body.classList.add('cloak-' + selectedCloak);
         document.title = tabTitles[selectedCloak];
 
-        // Change tab icon
         const tabIcon = tabIcons[selectedCloak];
         if (tabIcon) {
             const existingFavicon = document.querySelector('link[rel="icon"]');
             if (existingFavicon) {
-                existingFavicon.remove(); // Remove existing favicon
+                existingFavicon.remove();
             }
             const newFavicon = document.createElement('link');
             newFavicon.rel = 'icon';
@@ -45,23 +44,20 @@ function cloakPage(selectedCloak) {
             document.head.appendChild(newFavicon);
         }
 
-        // Save selected cloak to local storage
         localStorage.setItem('equinox||cloak', selectedCloak);
     } else {
         document.title = "Equinox V1";
 
-        // Reset favicon to default
         const defaultFaviconPath = '/assets/favicon.ico';
         const existingFavicon = document.querySelector('link[rel="icon"]');
         if (existingFavicon) {
-            existingFavicon.remove(); // Remove existing favicon
+            existingFavicon.remove();
         }
         const defaultFavicon = document.createElement('link');
         defaultFavicon.rel = 'icon';
         defaultFavicon.href = defaultFaviconPath;
         document.head.appendChild(defaultFavicon);
 
-        // Remove cloak from storage
         localStorage.removeItem('equinox||cloak');
     }
 }
@@ -74,7 +70,7 @@ function setTheme(selectedTheme) {
     body.style.backgroundPosition = 'center';
 
     const customBackground = localStorage.getItem('equinox||background');
-   
+
     if (customBackground) {
         body.style.backgroundImage = `url(${customBackground})`;
     } else {

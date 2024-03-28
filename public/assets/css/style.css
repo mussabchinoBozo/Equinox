@@ -227,7 +227,24 @@ footer a:hover {
   flex-direction: column;
 }
 
+.loading-progress {
+  appearance: none;
+  height: 10px;
+  width: 100%;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+}
 
+.loading-progress::-webkit-progress-bar {
+  background-color: #333;
+  border-radius: 5px;
+}
+
+.loading-progress::-webkit-progress-value {
+  background-color: #ccc; 
+  border-radius: 5px;
+}
 
 .submit-button {
   background: transparent;

@@ -1,5 +1,3 @@
-
-// cloak
 function cloakPage(selectedCloak) {
     const tabIcons = {
         'google': '/assets/img/cloak/google.webp',
@@ -29,7 +27,7 @@ function cloakPage(selectedCloak) {
             favicon.setAttribute('href', faviconPath);
         }
 
-        // Change tab icon
+
         const tabIcon = tabIcons[selectedCloak];
         if (tabIcon) {
             const tabIconLink = document.querySelector('link[rel="icon"]');
@@ -38,13 +36,12 @@ function cloakPage(selectedCloak) {
             }
         }
 
-        // Change tab title
+
         const tabTitle = tabTitles[selectedCloak];
         if (tabTitle) {
             document.title = tabTitle;
         }
 
-        // Save selected cloak to local storage
         localStorage.setItem('equinox||cloak', selectedCloak);
     } else {
         document.title = "Equinox V1";
@@ -67,21 +64,15 @@ function setTheme(selectedTheme) {
         body.classList.add('theme-gradient');
         body.style.background = 'linear-gradient(to right, #ff7e5f, #feb47b)';
     } else if (selectedTheme === 'flashbang') {
-
-        // topbar
         const topbar = document.querySelector('.topbar');
         topbar.style.backgroundColor = 'rgb(26 25 25 / 92%)';
     } else if (selectedTheme === 'ocean') {
-
-        // topbar
         const topbar = document.querySelector('.topbar');
         topbar.style.backgroundColor = 'rgba(40, 37, 69, 0.92)';
-
-
     } else if (selectedTheme === 'default') {
         console.log('default theme')
     }
-} 
+}
 
 function updateSettingsFromLocalStorage() {
     const storedEngine = localStorage.getItem('equinox||search') || 'google';
@@ -102,8 +93,7 @@ function updateSettingsFromLocalStorage() {
     cloakPage(storedCloak);
 }
 
-// set values on load
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     const storedEngine = localStorage.getItem('equinox||search') || 'google';
     document.getElementById('engine').value = storedEngine;
@@ -136,12 +126,11 @@ function updateSettings() {
     setTheme(selectedTheme);
 }
 
-// Add event listener for theme change
 document.getElementById('themes').addEventListener('change', updateSettings);
 document.getElementById('engine').addEventListener('change', updateSettings);
 document.getElementById('proxy').addEventListener('change', updateSettings);
 
-document.getElementById('set-background').addEventListener('click', function() {
+document.getElementById('set-background').addEventListener('click', function () {
     const backgroundInput = document.getElementById('custom-background');
     const statusText = document.getElementById('error');
     const customBackground = backgroundInput.value;
@@ -150,7 +139,7 @@ document.getElementById('set-background').addEventListener('click', function() {
     statusText.innerText = 'Set the background successfully.';
 });
 
-document.getElementById('remove-background').addEventListener('click', function() {
+document.getElementById('remove-background').addEventListener('click', function () {
     const backgroundInput = document.getElementById('custom-background');
     const statusText = document.getElementById('error');
     backgroundInput.value = '';
@@ -163,7 +152,7 @@ function updateBuildNumber() {
     fetch('https://api.github.com/repos/wrndxyz/equinox/commits')
         .then(response => response.json())
         .then(data => {
-            const buildNumber = data.length; // Use the total number of commits as the build number
+            const buildNumber = data.length;
             document.getElementById('buildnumber').innerText = buildNumber;
 
             if (data.length > 0) {

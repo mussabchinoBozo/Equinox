@@ -4,17 +4,19 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
    <title>New Tab</title>
    <link rel="stylesheet" href="/assets/css/style.css" />
    <link rel="stylesheet" href="/assets/css/games.css" />
 
    <link rel="icon" type="image/x-icon" href="/assets/eq.ico">
    <meta name="robots" content="noindex, nofollow">
-   <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
    <script src="/uv/uv.bundle.js"></script>
    <script src="/uv/uv.config.js"></script>
    <script src="/assets/js/index.js" defer></script>
-   <!-- Google tag (gtag.js) -->
+   <script src="/assets/js/functions.js" defer></script>
+
    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PC9KFJ31NH"></script>
    <script>
       window.dataLayer = window.dataLayer || [];
@@ -23,15 +25,10 @@
 
       gtag('config', 'G-PC9KFJ31NH');
    </script>
-   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1551126437976866"
-      crossorigin="anonymous"></script>
-
-   <script src="/assets/js/functions.js" defer></script>
-
 </head>
 
 <body>
-   <div id="particles-js" style="height: 100%; width: 100%; position: fixed; z-index: 0;"></div>
+
    <div class="topbar">
       <div class="left-buttons">
          <a id="exit" onclick="exit()" style="display: none">
@@ -59,9 +56,25 @@
       </div>
    </div>
 
-   <div id="align">
+   <div id="align" style="min-height: 100%">
       <iframe id="ifr"></iframe>
       <div id="m"></div>
+      <div style="position: relative;
+      display: flex;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.932);
+      justify-content: center;
+      flex-direction: column;
+      backdrop-filter: blur(20px);
+      align-items: center;
+      z-index: 140;" id="loadingScreen">
+         <img class="loading-image" src="assets/eq.png">
+         <div class="loading-text">Loading requested site...</div>
+         <progress class="loading-progress" value="0" max="100" style="background-color: #ccc; height: 10px"></progress>
+      </div>
    </div>
 
    <div class="alignment-container-1" style="margin-top:10%;">
@@ -139,11 +152,9 @@
          <a title="discord" class="fitem" href="/credits">Credits</a>
       </footer>
    </div>
-   <script src="/assets/js/home.js"></script>
-   <script src="https://d3js.org/d3.v4.min.js"></script>
-   <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
-   <script src="/assets/js/proxy.js" defer></script>
 
+   <script src="/assets/js/home.js"></script>
+   <script src="/assets/js/proxy.js" defer></script>
 </body>
 
 </html>

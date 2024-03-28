@@ -2,14 +2,12 @@ const search = document.getElementById("search");
 const searchInput = document.getElementById("search");
 let debounceTimeout;
 let isRequestPending = false;
-var erudaScript;
 
 
 window.addEventListener("DOMContentLoaded", () => {
 	const link = btoa(window.location.hash.slice(1));
 	if (link) go(link);
 
-	// info stuff
 	function updateText() {
 		const creationInfo = document.getElementById("creation-info");
 		const facts = [
@@ -30,7 +28,6 @@ window.addEventListener("DOMContentLoaded", () => {
 	updateText();
 	setInterval(updateText, 10000);
 
-	// on start
 	console.log(`
 		███████╗░██████╗░██╗░░░██╗██╗███╗░░██╗░█████╗░██╗░░██╗
 		██╔════╝██╔═══██╗██║░░░██║██║████╗░██║██╔══██╗╚██╗██╔╝
@@ -38,7 +35,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		██╔══╝░░╚██████╔╝██║░░░██║██║██║╚████║██║░░██║░██╔██╗░
 		███████╗░╚═██╔═╝░╚██████╔╝██║██║░╚███║╚█████╔╝██╔╝╚██╗
 		╚══════╝░░░╚═╝░░░░╚═════╝░╚═╝╚═╝░░╚══╝░╚════╝░╚═╝░░╚═╝\n
-							Version 1.35`);
+							Version 1.37`);
 });
 
 document.getElementById("form").addEventListener("submit", (event) => {
@@ -47,7 +44,6 @@ document.getElementById("form").addEventListener("submit", (event) => {
 });
 
 const gameContainers = document.querySelectorAll(".game-container");
-
 
 gameContainers.forEach(container => {
     container.addEventListener("click", (event) => {
@@ -90,7 +86,6 @@ async function fetchResults(searchText) {
 	}
 }
 
-
 const form = document.getElementById("form");
 
 searchInput.addEventListener("input", (event) => {
@@ -100,21 +95,3 @@ searchInput.addEventListener("input", (event) => {
 		form.focus();
 	}
 });
-
-function erudaToggle() {
-	var elem = document.getElementById("ifr");
-
-	if (erudaScript) {
-		elem.contentWindow.eruda.destroy();
-		elem.removeChild(erudaScript);
-		erudaScript = undefined;
-	} else {
-		erudaScript = document.createElement("script");
-		erudaScript.src = "https://cdn.jsdelivr.net/npm/eruda";
-		elem.contentDocument.body.appendChild(erudaScript);
-		erudaScript.onload = function () {
-			elem.contentWindow.eruda.init();
-			elem.contentWindow.eruda.show();
-		};
-	}
-}

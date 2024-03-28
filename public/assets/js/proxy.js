@@ -1,5 +1,6 @@
 const msg = document.getElementById("m");
 const frame = document.getElementById("ifr");
+const loadingScreen = document.getElementById("loadingScreen");
 
 function searchurl(url) {
 	switch (localStorage.getItem("equinox||search")) {
@@ -41,21 +42,51 @@ function resolveURL(url) {
 	}
 }
 
-function proxy(url) {
-	document.getElementById("align").style.display = "flex";
-	document.querySelector(".topbar").style.width = "98%";
-	document.getElementById("exit").style.display = "flex";
-	document.getElementById("fullscreen").style.display = "flex";
-	document.getElementById("homebtn").style.display = "none";
-	document.getElementById("settings").style.display = "none";
+function showLoadingScreen() {
+    var loadingScreen = document.getElementById('loadingScreen');
+    var loadingProgress = loadingScreen.querySelector('.loading-progress');
 
-	registerSW().then(worker => {
-		if (!worker) {
-			return msg.innerHTML = "Error: Your browser does not support service workers or is blocking them (private browsing mode?), try using a different browser";
-		}
-		frame.src = resolveURL(url);
-	});
+    loadingProgress.value = 0;
+
+    loadingScreen.style.display = 'flex';
+    loadingScreen.classList.add('fade-in');
+
+    var interval = setInterval(() => {
+        if (loadingProgress.value < 95) {
+            loadingProgress.value += Math.random() * 5;
+        }
+    }, 200);
+
+    frame.onload = function() {
+        clearInterval(interval);
+        loadingProgress.value = 100;
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+            frame.style.display = 'flex';
+        }, 500);
+    };
 }
+
+function proxy(url) {
+    document.getElementById("align").style.display = "flex";
+    document.querySelector(".topbar").style.width = "98%";
+    document.getElementById("exit").style.display = "flex";
+    document.getElementById("fullscreen").style.display = "flex";
+    document.getElementById("homebtn").style.display = "none";
+    document.getElementById("settings").style.display = "none";
+
+	frame.style.display = "none";
+    showLoadingScreen();
+
+    registerSW().then(worker => {
+        if (!worker) {
+            msg.innerHTML = "Error: Your browser does not support service workers or is blocking them (private browsing mode?), try using a different browser";
+            return;
+        }
+        frame.src = resolveURL(url);
+    });
+}
+
 
 function exit() {
 	document.getElementById("align").style.display = "none";
@@ -85,7 +116,6 @@ function fullscreen() {
         ifr.style.minHeight = "100vh";
     }, 100);
 
-    // Listen for the Escape key press only when not focused on the iframe
     document.addEventListener("keydown", function (event) {
         if (event.key === "Escape" && document.activeElement !== ifr) {
             topbar.style.display = "flex";
