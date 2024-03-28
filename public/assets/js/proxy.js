@@ -45,7 +45,10 @@ function proxy(url) {
 	document.getElementById("align").style.display = "flex";
 	document.querySelector(".topbar").style.width = "98%";
 	document.getElementById("exit").style.display = "flex";
+	document.getElementById("fullscreen").style.display = "flex";
 	document.getElementById("homebtn").style.display = "none";
+	document.getElementById("settings").style.display = "none";
+
 	registerSW().then(worker => {
 		if (!worker) {
 			return msg.innerHTML = "Error: Your browser does not support service workers or is blocking them (private browsing mode?), try using a different browser";
@@ -61,5 +64,35 @@ function exit() {
 	document.querySelector(".search").value = "";
 	frame.src = "";
 	document.getElementById("exit").style.display = "none";
+	document.getElementById("fullscreen").style.display = "none";
 	document.getElementById("homebtn").style.display = "flex";
+	document.getElementById("settings").style.display = "flex";
+}
+
+function fullscreen() {
+    const topbar = document.querySelector(".topbar");
+    const ifr = document.getElementById("ifr");
+
+    topbar.style.transition = "transform 0.3s ease";
+    topbar.style.transform = "translateY(-100%)";
+
+    setTimeout(() => {
+        topbar.style.display = "none";
+        topbar.style.transition = "";
+        topbar.style.transform = "";
+
+        ifr.style.height = "100%";
+        ifr.style.minHeight = "100vh";
+    }, 100);
+
+    // Listen for the Escape key press only when not focused on the iframe
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && document.activeElement !== ifr) {
+            topbar.style.display = "flex";
+            topbar.style.transform = "";
+            setTimeout(() => {
+                topbar.style.transition = "";
+            }, 300);
+        }
+    });
 }

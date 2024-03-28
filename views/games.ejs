@@ -34,35 +34,36 @@
 <body>
 	<div class="loading-screen" id="loadingScreen">
 		<img class="loading-image">
-        <div class="loading-text">Loading requested site...</div>
-		<progress class="loading-progress" value="0" max="100" ></progress>
+		<div class="loading-text">Loading requested site...</div>
+		<progress class="loading-progress" value="0" max="100"></progress>
 
-    </div>
-	<div class="topbar">
-
-		<div class="left-buttons">
-
-			<a id="exit" onclick="exit()" style="display: none">
-				<span style="font-weight: bold;">Exit</span>
-			</a>
-			<a id="homebtn" href="/" class="<%= path === '/' ? 'nav-active' : 'nav-btn' %>"><span>Home</span></a>
-			<a href="/a" class="<%= path === '/a' ? 'nav-active' : 'nav-btn' %>"><span>Apps</span></a>
-			<a href="/g" class="<%= path === '/g' ? 'nav-active' : 'nav-btn' %>"><span>Games</span></a>
-		</div>
-		<form id="form" class="center-form">
-			<input autofocus autocomplete="off" class="search" id="search" placeholder="Search Equinox Games"
-				required />
-			<button type="submit" class="submit-button">
-				<i class="fas fa-search searchicon"></i>
-			</button>
-		</form>
-		<div class="right-section">
-			<a class="nav-btn" href="/s"
-				style="display: flex; justify-content: flex-end; margin-left: auto;">Settings</a>
-			<a id="time" class="nav-btn"
-				style="display: flex; justify-content: flex-end; margin-left: auto;">00:00PM</a>
-		</div>
 	</div>
+	<div class="topbar">
+		<div class="left-buttons">
+		   <a id="exit" onclick="exit()" style="display: none">
+			  <span style="font-weight: bold;">Exit</span>
+		   </a>
+		   <a id="homebtn" href="/" class="<%= path === '/' ? 'nav-active' : 'nav-btn' %>"><span>Home</span></a>
+		   <a href="/a" class="<%= path === '/a' ? 'nav-active' : 'nav-btn' %>"><span>Apps</span></a>
+		   <a href="/g" class="<%= path === '/g' ? 'nav-active' : 'nav-btn' %>"><span>Games</span></a>
+		</div>
+  
+		<form id="form" class="center-form">
+		   <input autofocus autocomplete="off" class="search" id="search" placeholder="Search Equinox Games" required />
+		   <button type="submit" class="submit-button">
+			  <i class="fas fa-search searchicon"></i>
+		   </button>
+		</form>
+  
+		<div class="right-section">
+		   <a class="<%= path === '/a' ? 'nav-active' : 'nav-btn' %>" id="settings" href="/s"
+			  style="display: flex; justify-content: flex-end; margin-left: auto;">Settings</a>
+		   <a id="fullscreen" onclick="fullscreen()" style="display: none">
+			  <span>Full Screen</span>
+		   </a>
+		   <a id="time" class="nav-btn" style="display: flex; justify-content: flex-end; margin-left: auto;">00:00PM</a>
+		</div>
+	 </div>
 	<div id="align" style="min-height: 100%;">
 		<iframe id="ifr"></iframe>
 	</div>
@@ -84,7 +85,6 @@
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
 	<script src="/assets/js/functions.js"></script>
-	<script type='text/javascript' src='//pl22798167.profitablegatecpm.com/1a/2e/22/1a2e220906f1bfab2ae482dd482e8d17.js'></script>
 
 
 </body>
