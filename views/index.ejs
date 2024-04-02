@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
    <title>New Tab</title>
-   <link rel="stylesheet" href="/assets/css/style.css" />
-   <link rel="stylesheet" href="/assets/css/games.css" />
+   
+   <link rel="stylesheet" href="/assets/css/base.css" />
+   <link rel="stylesheet" href="/assets/css/home.css" />
 
    <link rel="icon" type="image/x-icon" href="/assets/eq.ico">
    <meta name="robots" content="noindex, nofollow">
@@ -59,85 +59,50 @@
    <div id="align" style="min-height: 100%">
       <iframe id="ifr"></iframe>
       <div id="m"></div>
-      <div style="position: relative;
-      display: flex;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.932);
-      justify-content: center;
-      flex-direction: column;
-      backdrop-filter: blur(20px);
-      align-items: center;
-      z-index: 140;" id="loadingScreen">
+      <div class="loading-screen" id="loadingScreen">
          <img class="loading-image" src="assets/eq.png">
          <div class="loading-text">Loading requested site...</div>
          <progress class="loading-progress" value="0" max="100" style="background-color: #ccc; height: 10px"></progress>
       </div>
    </div>
 
-   <div class="alignment-container-1" style="margin-top:10%;">
+   <div class="alignment-container" style="margin-top:10%;">
       <div class="header-container">
          <div class="logo-image">
             <img src="assets/eq.png" alt="logo" id="spinning" width="100%">
          </div>
       </div>
 
-      <div class="flex-center desc" style="text-align: center;">
+      <div style="text-align: center;">
          <p id="creation-info">
             Equinox was created in 2023
          </p>
       </div>
 
-      <div style="display: flex; flex-wrap: wrap; align-items: center;justify-content: center; flex-direction: column">
-         <div style="flex-direction: row; display: flex; margin-left: 30px; margin-bottom: 15px">
-            <div class="game-container" data-href="https://wrnd.xyz" style="margin-right: -10px; height: 100px;">
-               <div class="game" style="width: 94px;
-                     height: auto;
-                     background: rgb(20 19 19 / 53%);
-                     backdrop-filter: saturate(180%) blur(20px);
-                     -webkit-backdrop-filter: blur(8px);
-                     -moz-backdrop-filter: blur(8px);
-                     -ms-backdrop-filter: blur(8px);">
-                  <img style="border-radius: 10px" src="/assets/img/media/apps/wrnd.webp">
+      <div class="shortcuts">
+         <div class="shortcut-frame">
+            <div class="game-container" data-href="https://wrnd.xyz">
+               <div class="game">
+                  <img src="/assets/img/media/apps/wrnd.webp">
                </div>
             </div>
             <div class="game-container"
                data-href="https://play.geforcenow.com/games?game-id=cb2b1b5f-54ba-45fd-9839-96bbfe1376cd&lang=en_US&asset-id=01_0dd590e2-4d39-4b7f-804a-ae30330af836"
-               style="margin-right: -10px; height: 100px;">
-               <div class="game" style="width: 94px;
-                     height: auto;
-                     background: rgb(20 19 19 / 53%);
-                     backdrop-filter: saturate(180%) blur(20px);
-                     -webkit-backdrop-filter: blur(8px);
-                     -moz-backdrop-filter: blur(8px);
-                     -ms-backdrop-filter: blur(8px);">
-                  <img style="border-radius: 10px" src="/assets/img/media/games/apexpromo.webp">
+              >
+               <div class="game">
+                  <img src="/assets/img/media/games/apexpromo.webp">
                </div>
             </div>
             <div class="game-container"
                data-href="https://play.geforcenow.com/mall/#/deeplink?game-id=46bfab06-d864-465d-9e56-2d9e45cdee0a"
-               style="margin-right: -10px; height: 100px;">
-               <div class="game" style="width: 94px;
-                     height: auto;
-                     background: rgb(20 19 19 / 53%);
-                     backdrop-filter: saturate(180%) blur(20px);
-                     -webkit-backdrop-filter: blur(8px);
-                     -moz-backdrop-filter: blur(8px);
-                     -ms-backdrop-filter: blur(8px);">
-                  <img style="border-radius: 10px" src="/assets/img/media/games/fortnitepromo.webp">
+              >
+               <div class="game">
+                  <img src="/assets/img/media/games/fortnitepromo.webp">
                </div>
             </div>
-            <div class="game-container" data-href="https://netflix.com" style="margin-right: -10px; height: 100px;">
-               <div class="game" style="width: 94px;
-                     height: auto;
-                     background: rgb(20 19 19 / 53%);
-                     backdrop-filter: saturate(180%) blur(20px);
-                     -webkit-backdrop-filter: blur(8px);
-                     -moz-backdrop-filter: blur(8px);
-                     -ms-backdrop-filter: blur(8px);">
-                  <img style="border-radius: 10px" src="/assets/img/media/apps/netflixsmile.webp">
+            <div class="game-container" data-href="https://netflix.com">
+               <div class="game">
+                  <img src="/assets/img/media/apps/netflixsmile.webp">
                </div>
             </div>
          </div>
@@ -146,7 +111,7 @@
          <a title="discord" class="fitem" href="/tos">Terms</a>
          <a title="discord" class="fitem" href="https://discord.gg/H7JqRwykhk">Discord</a>
          <a title="version" href="https://github.com/wrndxyz/Equinox" style="color: rgb(83, 83, 83); font-weight: 500">
-            Equinox V1.37
+            Equinox V1.38
          </a>
          <a title="github" class="fitem" href="https://github.com/wrndxyz/">WRND</a>
          <a title="discord" class="fitem" href="/credits">Credits</a>

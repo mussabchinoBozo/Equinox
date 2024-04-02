@@ -76,3 +76,12 @@ Thanks for the continued support!
 • Every game and every app is now rendered through JS. I have also made it so all icons and images are local so no more blank screens for people.
 • I have added support for Dynamic. You can now switch between Ultraviolet and Dynamic in settings
 • Bug fixes
+
+# v1.38
+• Site speeds have improved significantly.
+• Amount of code on site has dropped by a good bit
+• Introduction to Equinox's Link Defender
+• Bug fixes
+• GeForce Now scaling fix
+• Removal of Equinox Mobile
+• Removal of Dynamic because its too unstable

@@ -1,0 +1,219 @@
+@import "https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap";
+
+
+html,
+body {
+    display: flex;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    background: #000;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    background-color: #000;
+    border-radius: 5px
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    width: 50%;
+    z-index: 200;
+    border-radius: 15px;
+    background: #0a0a0aeb;
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 0 50px -5px #0c0c0cd9;
+    transition: width .3s ease
+}
+
+.topbar form {
+    flex: 1;
+    margin: 0 20px 6px
+}
+
+.topbar a,
+.left-buttons a {
+    color: #e0e0e0;
+    padding: 8px;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: 400;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    transition: all .5s ease
+}
+
+.left-buttons,
+.right-section {
+    display: flex
+}
+
+.left-buttons a {
+    margin-right: 10px
+}
+
+.search {
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    padding: 5px;
+    width: 100%;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    transition: .5s;
+    align-items: center;
+    display: flex;
+    flex: 1;
+    flex-direction: column
+}
+
+.nav-btn {
+    position: relative;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none
+}
+
+.nav-btn:hover {
+    background-color: #302f2f
+}
+
+#form {
+    background: none;
+    padding: 0 17px;
+    height: 52px;
+    z-index: 200;
+    box-shadow: 0 1px 3px #00000080;
+    background-color: #0006;
+    border: 1px solid #3333333b;
+    color: var(--text-color);
+    border-radius: 3px;
+    outline: none;
+    width: 600px;
+    margin-top: 5px;
+    border-radius: 12px;
+    color: #fff;
+    transition: border-radius .1s;
+    display: flex;
+    align-items: center
+}
+
+.topbar form {
+    flex: 1;
+    margin: 0 20px 6px
+}
+
+.submit-button {
+    background: transparent;
+    border: none !important
+}
+
+#align {
+    display: none;
+    z-index: 100000;
+    flex-direction: row;
+    width: 100%;
+    height: 100%
+}
+
+#ifr {
+    border-radius: 15px;
+    width: 100%;
+    height: 90%;
+    min-height: 94vh;
+    display: block;
+    border: 0;
+    border-color: transparent;
+    z-index: 1
+}
+
+.loading-screen {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000e;
+    justify-content: center;
+    flex-direction: column;
+    backdrop-filter: blur(20px);
+    align-items: center;
+    z-index: 9999
+}
+
+.loading-image {
+    height: 150px;
+    border-radius: 8px
+}
+
+.loading-progress {
+    appearance: none;
+    height: 10px;
+    width: 40%;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px
+}
+
+.loading-progress::-webkit-progress-bar {
+    background-color: #333;
+    border-radius: 5px
+}
+
+.loading-progress::-webkit-progress-value {
+    background-color: #ccc;
+    border-radius: 5px
+}
+
+.loading-text {
+    color: #fff;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 15px
+}
+
+footer {
+    margin-top: auto;
+    align-self: center;
+    height: 80px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 30px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    z-index: 1
+}
+
+footer a,
+footer span {
+    margin: auto;
+    text-decoration: none;
+    color: #4d4d4d;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif
+}
+
+footer a {
+    cursor: pointer
+}
+
+footer a:hover {
+    text-decoration: underline
+}

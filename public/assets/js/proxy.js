@@ -75,7 +75,7 @@ function proxy(url) {
     document.getElementById("homebtn").style.display = "none";
     document.getElementById("settings").style.display = "none";
 
-	frame.style.display = "none";
+    frame.style.display = "none";
     showLoadingScreen();
 
     registerSW().then(worker => {
@@ -83,9 +83,35 @@ function proxy(url) {
             msg.innerHTML = "Error: Your browser does not support service workers or is blocking them (private browsing mode?), try using a different browser";
             return;
         }
+
+        frame.onload = function() {
+            loadingScreen.style.display = 'none';
+            frame.style.display = 'flex';
+
+            // Observe mutations in the iframe content
+            const observer = new MutationObserver(mutations => {
+                mutations.forEach(mutation => {
+                    if (mutation.addedNodes && mutation.addedNodes.length > 0) {
+                        mutation.addedNodes.forEach(node => {
+                            if (node.textContent && node.textContent.includes('Games' || 'Looking for the Next Available Rig...' || 'NIVIDA')) {
+                                console.log('GeForce Now detected, applying fix');
+                                document.getElementById("align").style.display = "none";
+                                setTimeout(() => {
+                                    document.getElementById("align").style.display = "flex";
+                                }, 1000);
+                            }
+                        });
+                    }
+                });
+            });
+
+            observer.observe(frame.contentDocument.body, { childList: true, subtree: true });
+        };
+
         frame.src = resolveURL(url);
     });
 }
+
 
 
 function exit() {

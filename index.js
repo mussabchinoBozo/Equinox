@@ -4,6 +4,8 @@ import express from "express";
 import path from "path";
 import dotenv from "dotenv";
 import useragent from "express-useragent";
+import cookieParser from "cookie-parser";
+
 
 dotenv.config();
 
@@ -12,7 +14,10 @@ const __dirname = process.cwd();
 const httpServer = createServer();
 const app = express(httpServer);
 
+
 app.use(useragent.express());
+app.use(cookieParser());
+
 
 app.use(express.json());
 app.use(
@@ -23,55 +28,97 @@ app.use(
 
 app.set("view engine", "ejs");
 app.use("/uv/", express.static(path.join(__dirname, "/assets/uv")));
-app.use("/dy/", express.static(path.join(__dirname, "/assets/dy")));
 app.use(express.static(path.join(__dirname, "/public")));
 app.set("views", path.join(__dirname, "/views"));
 
+const bypassDomains = ['wrnd.lat', 'testing.wrnd.lat', 'wrnd.site', 'unblck.pro']; // public links, they are already blocked
+
+
 app.get('/', (req, res) => {
     const userAgent = req.useragent;
+    const license = req.cookies['license'];
 
-    if (userAgent.isMobile || userAgent.isTablet) {
-        res.set('Content-Type', 'text/html');
-        res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'), { version: process.env.VERSION });
+    const host = req.headers.host || '';
+
+    const domain = host.split(':')[0];
+
+    if (license || bypassDomains.includes(domain)) {
+        if (userAgent.isMobile || userAgent.isTablet) {
+            res.set('Content-Type', 'text/html');
+            res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
+        } else {
+            res.set('Content-Type', 'text/html');
+            res.sendFile(path.join(process.cwd(), './views/index.ejs'));
+        }
     } else {
         res.set('Content-Type', 'text/html');
-        res.sendFile(path.join(process.cwd(), './views/index.ejs'), { version: process.env.VERSION });
+        res.sendFile(path.join(process.cwd(), './views/wall.ejs'));
     }
 });
 
 app.get('/a', (req, res) => {
     const userAgent = req.useragent;
+    const license = req.cookies['license'];
 
-    if (userAgent.isMobile || useragent.isTablet) {
-        res.set('Content-Type', 'text/html');
-        res.sendFile(path.join(process.cwd(), './views/mobile/apps.ejs'));
+    const host = req.headers.host || '';
+
+    const domain = host.split(':')[0];
+
+    if (license || bypassDomains.includes(domain)) {
+        if (userAgent.isMobile || userAgent.isTablet) {
+            res.set('Content-Type', 'text/html');
+            res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
+        } else {
+            res.set('Content-Type', 'text/html');
+            res.sendFile(path.join(process.cwd(), './views/apps.ejs'));
+        }
     } else {
         res.set('Content-Type', 'text/html');
-        res.sendFile(path.join(process.cwd(), './views/apps.ejs'));
+        res.sendFile(path.join(process.cwd(), './views/wall.ejs'));
     }
 });
 
 app.get('/g', (req, res) => {
     const userAgent = req.useragent;
+    const license = req.cookies['license'];
 
-    if (userAgent.isMobile || useragent.isTablet) {
-        res.set('Content-Type', 'text/html');
-        res.sendFile(path.join(process.cwd(), './views/mobile/games.ejs'));
+    const host = req.headers.host || '';
+
+    const domain = host.split(':')[0];
+
+    if (license || bypassDomains.includes(domain)) {
+        if (userAgent.isMobile || userAgent.isTablet) {
+            res.set('Content-Type', 'text/html');
+            res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
+        } else {
+            res.set('Content-Type', 'text/html');
+            res.sendFile(path.join(process.cwd(), './views/games.ejs'));
+        }
     } else {
         res.set('Content-Type', 'text/html');
-        res.sendFile(path.join(process.cwd(), './views/games.ejs'));
+        res.sendFile(path.join(process.cwd(), './views/wall.ejs'));
     }
 });
 
 app.get('/s', (req, res) => {
     const userAgent = req.useragent;
+    const license = req.cookies['license'];
 
-    if (userAgent.isMobile || useragent.isTablet) {
-        res.set('Content-Type', 'text/html');
-        res.sendFile(path.join(process.cwd(), './views/mobile/options.ejs'));
+    const host = req.headers.host || '';
+
+    const domain = host.split(':')[0];
+
+    if (license || bypassDomains.includes(domain)) {
+        if (userAgent.isMobile || userAgent.isTablet) {
+            res.set('Content-Type', 'text/html');
+            res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
+        } else {
+            res.set('Content-Type', 'text/html');
+            res.sendFile(path.join(process.cwd(), './views/settings.ejs'));
+        }
     } else {
         res.set('Content-Type', 'text/html');
-        res.sendFile(path.join(process.cwd(), './views/settings.ejs'));
+        res.sendFile(path.join(process.cwd(), './views/wall.ejs'));
     }
 });
 
@@ -89,7 +136,6 @@ app.get('/tos', (req, res) => {
 app.use((_, res) => res.status(404).render("404"));
 
 
-
 httpServer.on("request", (req, res) => {
     if (bare.shouldRoute(req)) bare.routeRequest(req, res);
     else app(req, res);
@@ -102,7 +148,7 @@ httpServer.on("upgrade", (req, socket, head) => {
     else socket.end();
 });
 
-httpServer.listen({ port: process.env.PORT || 8000 }, () => {
+httpServer.listen({ port: process.env.PORT || 3000 }, () => {
     const addr = httpServer.address();
     console.log(`
     ███████╗░██████╗░██╗░░░██╗██╗███╗░░██╗░█████╗░██╗░░██╗

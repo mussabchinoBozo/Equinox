@@ -5,9 +5,15 @@
   margin-bottom: 10px;
 }
 
+html, body {
+  overflow: auto;
+  background: #070707;
+}
+
 * {
   box-sizing: border-box;
 }
+
 
 .games-body {
   height: 100%;

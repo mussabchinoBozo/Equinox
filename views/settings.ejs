@@ -5,14 +5,11 @@
       <title>New Tab</title>
       <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
       <meta name="robots" content="noindex, nofollow">
-      <link rel="stylesheet" href="/assets/css/style.css" />
-      <link rel="stylesheet" href="/assets/css/games.css" />
+
+      <link rel="stylesheet" href="/assets/css/base.css" />
       <link rel="stylesheet" href="/assets/css/options.css" />
-      <script src="/uv/uv.bundle.js"></script>
-      <script src="/uv/uv.config.js"></script>
-      <script src="/assets/js/index.js" defer></script>
-      <script src="/assets/js/cursor.js" defer></script>
-      <!-- Google tag (gtag.js) -->
+
+
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-PC9KFJ31NH"></script>
       <script>
          window.dataLayer = window.dataLayer || [];
@@ -21,8 +18,7 @@
          
          gtag('config', 'G-PC9KFJ31NH');
       </script>
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1551126437976866"
-         crossorigin="anonymous"></script>
+
    </head>
    <body style="background-image: none">
       <div class="topbar">
@@ -66,13 +62,6 @@
                         <option value="yahoo">Yahoo</option>
                      </select>
                   </fieldset>
-                  <fieldset>
-                     <label>Select a proxy server</label>
-                     <select id="proxy" class="input-group" name="proxy">
-                        <option value="uv">Ultraviolet</option>
-                        <option value="dy">Dynamic</option>
-                     </select>
-                  </fieldset>
                </div>
             </article>
          </article>
@@ -112,14 +101,6 @@
                <div class="grid col-2">
                   <fieldset>
                      <label>
-                        Stealth Mode
-                        <p>Coming soon...
-                        </p>
-                     </label>
-   
-                  </fieldset>
-                  <fieldset>
-                     <label>
                         Tab Cloaking
                         <p>Change the tab icon and title of the page.</p>
                      </label>
@@ -138,8 +119,15 @@
 
                      </div>
                      <div class="button-group">
-                        <button type="button" class="button" id="stealth-off">Reset</button>
+                        <button type="button" class="button" id="none-cloak" onclick="cloakPage('none')">Reset</button>
                      </div>
+                  </fieldset>
+                  <fieldset>
+                     <label>
+                        Stealth Mode
+                        <p>Coming soon...</p>
+                     </label>
+   
                   </fieldset>
                </div>
             </article>
@@ -154,7 +142,7 @@
                   <fieldset>
                      <label>
                         Version Number
-                        <p id="eqversion">1.37<span id="latestorno"> (Latest)</span></p>
+                        <p id="eqversion">1.38<span id="latestorno"> (Latest)</span></p>
                      </label>
                      <label>
                         Build Number
@@ -179,10 +167,6 @@
          </article>
       </div>
       </div>
-      <script src="/assets/js/proxy.js"></script>
-      <script src="/assets/js/games.js"></script>
-      <script src="https://d3js.org/d3.v4.min.js"></script>
-      <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
       <script src="/assets/js/settings.js"></script>
    </body>
 </html>

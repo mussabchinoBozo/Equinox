@@ -5,6 +5,7 @@ function cloakPage(selectedCloak) {
         'drive': '/assets/img/cloak/google-drive.webp',
         'classroom': '/assets/img/cloak/home.webp',
         'chrome': '/assets/img/cloak/chrome.webp',
+        'none': '/assets/favicon.ico'
     };
 
     const tabTitles = {
@@ -13,9 +14,10 @@ function cloakPage(selectedCloak) {
         'drive': 'Google Drive',
         'classroom': 'Google Classroom',
         'chrome': 'Google Chrome',
+        'none': 'Equinox V1'
     };
 
-    document.body.classList.remove('cloak-google', 'cloak-googledrive', 'cloak-docs', 'cloak-classroom', 'cloak-chrome');
+    document.body.classList.remove('cloak-google', 'cloak-googledrive', 'cloak-docs', 'cloak-classroom', 'cloak-chrome', 'cloak-none');
     if (selectedCloak !== 'none') {
         document.body.classList.add('cloak-' + selectedCloak);
         const titleFormatted = selectedCloak.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
@@ -78,8 +80,6 @@ function updateSettingsFromLocalStorage() {
     const storedEngine = localStorage.getItem('equinox||search') || 'google';
     document.getElementById('engine').value = storedEngine;
 
-    const storedProxy = localStorage.getItem('equinox||proxy') || 'uv';
-    document.getElementById('proxy').value = storedProxy;
 
     const storedTheme = localStorage.getItem('equinox||theme') || 'default';
     document.getElementById('themes').value = storedTheme;
@@ -88,18 +88,15 @@ function updateSettingsFromLocalStorage() {
     const storedCustomBG = localStorage.getItem('equinox||background') || '';
     document.getElementById('custom-background').value = storedCustomBG;
 
-    const storedCloak = localStorage.getItem('equinox||cloak') || 'none';
-    document.getElementById('cloaks').value = storedCloak;
-    cloakPage(storedCloak);
 }
+
+updateSettingsFromLocalStorage();
 
 document.addEventListener('DOMContentLoaded', function () {
 
     const storedEngine = localStorage.getItem('equinox||search') || 'google';
     document.getElementById('engine').value = storedEngine;
 
-    const storedProxy = localStorage.getItem('equinox||proxy') || 'uv';
-    document.getElementById('proxy').value = storedProxy;
 
     const storedTheme = localStorage.getItem('equinox||theme') || 'default';
     document.getElementById('themes').value = storedTheme;
@@ -128,7 +125,6 @@ function updateSettings() {
 
 document.getElementById('themes').addEventListener('change', updateSettings);
 document.getElementById('engine').addEventListener('change', updateSettings);
-document.getElementById('proxy').addEventListener('change', updateSettings);
 
 document.getElementById('set-background').addEventListener('click', function () {
     const backgroundInput = document.getElementById('custom-background');
