@@ -5,7 +5,7 @@ import path from "path";
 import dotenv from "dotenv";
 import useragent from "express-useragent";
 import cookieParser from "cookie-parser";
-
+import { check } from './inj.js';
 
 dotenv.config();
 
@@ -31,19 +31,17 @@ app.use("/uv/", express.static(path.join(__dirname, "/assets/uv")));
 app.use(express.static(path.join(__dirname, "/public")));
 app.set("views", path.join(__dirname, "/views"));
 
-const bypassDomains = ['wrnd.lat', 'testing.wrnd.lat', 'wrnd.site', 'unblck.pro']; // public links, they are already blocked
 
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
     const userAgent = req.useragent;
     const license = req.cookies['license'];
 
     const host = req.headers.host || '';
+    const verify = await check(host);
 
-    const domain = host.split(':')[0];
-
-    if (license || bypassDomains.includes(domain)) {
-        if (userAgent.isMobile || userAgent.isTablet) {
+    if (license || verify) {
+        if (userAgent.isMobile) {
             res.set('Content-Type', 'text/html');
             res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
         } else {
@@ -56,16 +54,16 @@ app.get('/', (req, res) => {
     }
 });
 
-app.get('/a', (req, res) => {
+app.get('/a', async (req, res) => {
     const userAgent = req.useragent;
     const license = req.cookies['license'];
 
     const host = req.headers.host || '';
+    const verify = await check(host);
 
-    const domain = host.split(':')[0];
 
-    if (license || bypassDomains.includes(domain)) {
-        if (userAgent.isMobile || userAgent.isTablet) {
+    if (license || verify) {
+        if (userAgent.isMobilet) {
             res.set('Content-Type', 'text/html');
             res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
         } else {
@@ -78,16 +76,16 @@ app.get('/a', (req, res) => {
     }
 });
 
-app.get('/g', (req, res) => {
+app.get('/g', async (req, res) => {
     const userAgent = req.useragent;
     const license = req.cookies['license'];
 
     const host = req.headers.host || '';
+    const verify = await check(host);
 
-    const domain = host.split(':')[0];
 
-    if (license || bypassDomains.includes(domain)) {
-        if (userAgent.isMobile || userAgent.isTablet) {
+    if (license || verify) {
+        if (userAgent.isMobile) {
             res.set('Content-Type', 'text/html');
             res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
         } else {
@@ -100,16 +98,16 @@ app.get('/g', (req, res) => {
     }
 });
 
-app.get('/s', (req, res) => {
+app.get('/s', async (req, res) => {
     const userAgent = req.useragent;
     const license = req.cookies['license'];
 
     const host = req.headers.host || '';
+    const verify = await check(host);
 
-    const domain = host.split(':')[0];
 
-    if (license || bypassDomains.includes(domain)) {
-        if (userAgent.isMobile || userAgent.isTablet) {
+    if (license || verify) {
+        if (userAgent.isMobile) {
             res.set('Content-Type', 'text/html');
             res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
         } else {

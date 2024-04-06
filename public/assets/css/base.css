@@ -4,13 +4,15 @@
 html,
 body {
     display: flex;
+    margin: 0;
+    padding: 0;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     flex-direction: column;
     width: 100%;
     align-items: center;
-    background: #000;
+    background-color: #000;
     height: 100%;
     font-family: 'Montserrat', sans-serif;
 }

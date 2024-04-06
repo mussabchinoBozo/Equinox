@@ -88,7 +88,6 @@ function proxy(url) {
             loadingScreen.style.display = 'none';
             frame.style.display = 'flex';
 
-            // Observe mutations in the iframe content
             const observer = new MutationObserver(mutations => {
                 mutations.forEach(mutation => {
                     if (mutation.addedNodes && mutation.addedNodes.length > 0) {
@@ -111,7 +110,6 @@ function proxy(url) {
         frame.src = resolveURL(url);
     });
 }
-
 
 
 function exit() {

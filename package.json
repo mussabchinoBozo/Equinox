@@ -28,6 +28,7 @@
     "express-device": "^0.4.2",
     "express-useragent": "^1.0.15",
     "http": "^0.0.1-security",
+    "libcurl.js": "^0.6.7",
     "node": "^21.2.0",
     "node-fetch": "^3.3.2",
     "node-localstorage": "^3.0.5",
