@@ -33,14 +33,14 @@ app.set("views", path.join(__dirname, "/views"));
 
 
 
+
 app.get('/', async (req, res) => {
     const userAgent = req.useragent;
     const license = req.cookies['license'];
 
     const host = req.headers.host || '';
-    const verify = await check(host);
 
-    if (license || verify) {
+    if (license || !check(host)) {
         if (userAgent.isMobile) {
             res.set('Content-Type', 'text/html');
             res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
@@ -59,11 +59,9 @@ app.get('/a', async (req, res) => {
     const license = req.cookies['license'];
 
     const host = req.headers.host || '';
-    const verify = await check(host);
 
-
-    if (license || verify) {
-        if (userAgent.isMobilet) {
+    if (license || !check(host)) {
+        if (userAgent.isMobile) {
             res.set('Content-Type', 'text/html');
             res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
         } else {
@@ -81,10 +79,8 @@ app.get('/g', async (req, res) => {
     const license = req.cookies['license'];
 
     const host = req.headers.host || '';
-    const verify = await check(host);
 
-
-    if (license || verify) {
+    if (license || !check(host)) {
         if (userAgent.isMobile) {
             res.set('Content-Type', 'text/html');
             res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
@@ -103,10 +99,8 @@ app.get('/s', async (req, res) => {
     const license = req.cookies['license'];
 
     const host = req.headers.host || '';
-    const verify = await check(host);
 
-
-    if (license || verify) {
+    if (license || !check(host)) {
         if (userAgent.isMobile) {
             res.set('Content-Type', 'text/html');
             res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
@@ -146,7 +140,7 @@ httpServer.on("upgrade", (req, socket, head) => {
     else socket.end();
 });
 
-httpServer.listen({ port: process.env.PORT || 3000 }, () => {
+httpServer.listen({ port: process.env.PORT || 8080 }, () => {
     const addr = httpServer.address();
     console.log(`
     ███████╗░██████╗░██╗░░░██╗██╗███╗░░██╗░█████╗░██╗░░██╗

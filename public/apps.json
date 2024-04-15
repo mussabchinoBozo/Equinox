@@ -34,6 +34,12 @@
 
       },
       {
+        "name": "Amazon Luna",
+        "image": "/assets/img/media/apps/luna.webp",
+        "url": "https://luna.amazon.com/"
+
+      },
+      {
         "name": "Google",
         "image": "/assets/img/media/apps/google.webp",
         "url": "https://google.com"

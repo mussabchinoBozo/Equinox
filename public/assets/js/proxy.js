@@ -92,7 +92,7 @@ function proxy(url) {
                 mutations.forEach(mutation => {
                     if (mutation.addedNodes && mutation.addedNodes.length > 0) {
                         mutation.addedNodes.forEach(node => {
-                            if (node.textContent && node.textContent.includes('Games' || 'Looking for the Next Available Rig...' || 'NIVIDA')) {
+                            if (url.includes('play.geforcenow.com') && node.textContent && (node.textContent.includes('Games') || node.textContent.includes('Looking for the Next Available Rig...') || node.textContent.includes('NIVIDA'))) {
                                 console.log('GeForce Now detected, applying fix');
                                 document.getElementById("align").style.display = "none";
                                 setTimeout(() => {

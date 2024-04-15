@@ -85,3 +85,8 @@ Thanks for the continued support!
 • GeForce Now scaling fix
 • Removal of Equinox Mobile
 • Removal of Dynamic because its too unstable
+
+# v1.39
+• Site speeds have improved significantly, again.
+• Link defender updates
+• Bug fixes
