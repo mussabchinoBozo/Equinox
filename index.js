@@ -7,6 +7,7 @@ import useragent from "express-useragent";
 import cookieParser from "cookie-parser";
 import { check } from './inj.js';
 
+
 dotenv.config();
 
 const bare = createBareServer("/bare/");
@@ -40,7 +41,7 @@ app.get('/', async (req, res) => {
 
     const host = req.headers.host || '';
 
-    if (license || !check(host)) {
+    if (license || check(host)) {
         if (userAgent.isMobile) {
             res.set('Content-Type', 'text/html');
             res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
@@ -60,7 +61,7 @@ app.get('/a', async (req, res) => {
 
     const host = req.headers.host || '';
 
-    if (license || !check(host)) {
+    if (license || check(host)) {
         if (userAgent.isMobile) {
             res.set('Content-Type', 'text/html');
             res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
@@ -73,14 +74,13 @@ app.get('/a', async (req, res) => {
         res.sendFile(path.join(process.cwd(), './views/wall.ejs'));
     }
 });
-
 app.get('/g', async (req, res) => {
     const userAgent = req.useragent;
     const license = req.cookies['license'];
 
     const host = req.headers.host || '';
 
-    if (license || !check(host)) {
+    if (license || check(host)) {
         if (userAgent.isMobile) {
             res.set('Content-Type', 'text/html');
             res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
@@ -100,7 +100,7 @@ app.get('/s', async (req, res) => {
 
     const host = req.headers.host || '';
 
-    if (license || !check(host)) {
+    if (license || check(host)) {
         if (userAgent.isMobile) {
             res.set('Content-Type', 'text/html');
             res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
@@ -140,7 +140,7 @@ httpServer.on("upgrade", (req, socket, head) => {
     else socket.end();
 });
 
-httpServer.listen({ port: process.env.PORT || 8080 }, () => {
+httpServer.listen({ port: process.env.PORT || 3000 }, () => {
     const addr = httpServer.address();
     console.log(`
     ███████╗░██████╗░██╗░░░██╗██╗███╗░░██╗░█████╗░██╗░░██╗
