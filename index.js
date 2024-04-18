@@ -7,7 +7,6 @@ import useragent from "express-useragent";
 import cookieParser from "cookie-parser";
 import { check } from './inj.js';
 
-
 dotenv.config();
 
 const bare = createBareServer("/bare/");
@@ -38,10 +37,9 @@ app.set("views", path.join(__dirname, "/views"));
 app.get('/', async (req, res) => {
     const userAgent = req.useragent;
     const license = req.cookies['license'];
-
     const host = req.headers.host || '';
 
-    if (license || check(host)) {
+    if (license) {
         if (userAgent.isMobile) {
             res.set('Content-Type', 'text/html');
             res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
@@ -50,18 +48,27 @@ app.get('/', async (req, res) => {
             res.sendFile(path.join(process.cwd(), './views/index.ejs'));
         }
     } else {
-        res.set('Content-Type', 'text/html');
-        res.sendFile(path.join(process.cwd(), './views/wall.ejs'));
+        if (await check(host)) {
+            if (userAgent.isMobile) {
+                res.set('Content-Type', 'text/html');
+                res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
+            } else {
+                res.set('Content-Type', 'text/html');
+                res.sendFile(path.join(process.cwd(), './views/index.ejs'));
+            }
+        } else {
+            res.set('Content-Type', 'text/html');
+            res.sendFile(path.join(process.cwd(), './views/wall.ejs'));
+        }
     }
 });
 
 app.get('/a', async (req, res) => {
     const userAgent = req.useragent;
     const license = req.cookies['license'];
-
     const host = req.headers.host || '';
 
-    if (license || check(host)) {
+    if (license) {
         if (userAgent.isMobile) {
             res.set('Content-Type', 'text/html');
             res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
@@ -70,17 +77,27 @@ app.get('/a', async (req, res) => {
             res.sendFile(path.join(process.cwd(), './views/apps.ejs'));
         }
     } else {
-        res.set('Content-Type', 'text/html');
-        res.sendFile(path.join(process.cwd(), './views/wall.ejs'));
+        if (await check(host)) {
+            if (userAgent.isMobile) {
+                res.set('Content-Type', 'text/html');
+                res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
+            } else {
+                res.set('Content-Type', 'text/html');
+                res.sendFile(path.join(process.cwd(), './views/apps.ejs'));
+            }
+        } else {
+            res.set('Content-Type', 'text/html');
+            res.sendFile(path.join(process.cwd(), './views/wall.ejs'));
+        }
     }
 });
+
 app.get('/g', async (req, res) => {
     const userAgent = req.useragent;
     const license = req.cookies['license'];
-
     const host = req.headers.host || '';
 
-    if (license || check(host)) {
+    if (license) {
         if (userAgent.isMobile) {
             res.set('Content-Type', 'text/html');
             res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
@@ -89,18 +106,27 @@ app.get('/g', async (req, res) => {
             res.sendFile(path.join(process.cwd(), './views/games.ejs'));
         }
     } else {
-        res.set('Content-Type', 'text/html');
-        res.sendFile(path.join(process.cwd(), './views/wall.ejs'));
+        if (await check(host)) {
+            if (userAgent.isMobile) {
+                res.set('Content-Type', 'text/html');
+                res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
+            } else {
+                res.set('Content-Type', 'text/html');
+                res.sendFile(path.join(process.cwd(), './views/games.ejs'));
+            }
+        } else {
+            res.set('Content-Type', 'text/html');
+            res.sendFile(path.join(process.cwd(), './views/wall.ejs'));
+        }
     }
 });
 
 app.get('/s', async (req, res) => {
     const userAgent = req.useragent;
     const license = req.cookies['license'];
-
     const host = req.headers.host || '';
 
-    if (license || check(host)) {
+    if (license) {
         if (userAgent.isMobile) {
             res.set('Content-Type', 'text/html');
             res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
@@ -109,8 +135,18 @@ app.get('/s', async (req, res) => {
             res.sendFile(path.join(process.cwd(), './views/settings.ejs'));
         }
     } else {
-        res.set('Content-Type', 'text/html');
-        res.sendFile(path.join(process.cwd(), './views/wall.ejs'));
+        if (await check(host)) {
+            if (userAgent.isMobile) {
+                res.set('Content-Type', 'text/html');
+                res.sendFile(path.join(process.cwd(), './views/mobile/index.ejs'));
+            } else {
+                res.set('Content-Type', 'text/html');
+                res.sendFile(path.join(process.cwd(), './views/settings.ejs'));
+            }
+        } else {
+            res.set('Content-Type', 'text/html');
+            res.sendFile(path.join(process.cwd(), './views/wall.ejs'));
+        }
     }
 });
 

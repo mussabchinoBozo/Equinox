@@ -31,7 +31,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		██╔══╝░░╚██████╔╝██║░░░██║██║██║╚████║██║░░██║░██╔██╗░
 		███████╗░╚═██╔═╝░╚██████╔╝██║██║░╚███║╚█████╔╝██╔╝╚██╗
 		╚══════╝░░░╚═╝░░░░╚═════╝░╚═╝╚═╝░░╚══╝░╚════╝░╚═╝░░╚═╝\n
-							Version 1.38`);
+							Version 1.39`);
 });
 
 document.getElementById("form").addEventListener("submit", (event) => {
