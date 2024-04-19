@@ -125,28 +125,11 @@ function exit() {
 }
 
 function fullscreen() {
-    const topbar = document.querySelector(".topbar");
-    const ifr = document.getElementById("ifr");
-
-    topbar.style.transition = "transform 0.3s ease";
-    topbar.style.transform = "translateY(-100%)";
-
-    setTimeout(() => {
-        topbar.style.display = "none";
-        topbar.style.transition = "";
-        topbar.style.transform = "";
-
-        ifr.style.height = "100%";
-        ifr.style.minHeight = "100vh";
-    }, 100);
-
-    document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape" && document.activeElement !== ifr) {
-            topbar.style.display = "flex";
-            topbar.style.transform = "";
-            setTimeout(() => {
-                topbar.style.transition = "";
-            }, 300);
-        }
-    });
+    if (!document.fullscreenElement) {
+        frame.requestFullscreen().catch(err => {
+            console.error(`error ${err.message}`);
+        });
+    } else {
+        document.exitFullscreen();
+    }
 }
