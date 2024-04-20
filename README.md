@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  <h4>Equinox is a top-notch web proxy built to prioritize security, speed, and a commitment to safe and smooth browsing.</h4>
+  <h4>Equinox is one of the fastest-growing and top-notch web proxies built to prioritize security, speed, and a commitment to safe and smooth browsing.</h4>
 </div>
 <br>
 
