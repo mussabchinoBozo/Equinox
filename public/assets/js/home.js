@@ -8,11 +8,11 @@ window.addEventListener("DOMContentLoaded", () => {
     function updateText() {
         const creationInfo = document.getElementById("creation-info");
         const facts = [
-            "Equinox was created in January 2024.",
-            "Equinox is updated very frequently.",
+            "Mussab was created in January 2024.",
+            "Mussab is updated very frequently.",
             "Happy browsing!",
             "Experienced downtime? Look at our Discord server for status updates.",
-            "https://discord.gg/H7JqRwykhk",
+            "https://discord.com",
             "Customize your experience in settings!",
             "We have a lot of popular games and apps to choose from.",
             "Have you ever played Monkey Mart? It's so fun!",
